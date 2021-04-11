@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "outDir": "dist",
+        "outDir": "dist/src",
         "rootDir": "src",
         "moduleResolution": "node",
         "module": "commonjs",
@@ -28,8 +28,8 @@
         "listFiles": false /* Print names of files part of the compilation. */,
         "pretty": true /* Stylize errors and messages using color and context. */,
         /* Experimental Options */
-        // "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
-        // "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
+        "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
+        "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
         "lib": [
             "esnext",
             "dom"

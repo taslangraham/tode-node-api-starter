@@ -11,11 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mikro-orm/cli": "^4.5.3",
+    "@mikro-orm/core": "^4.5.3",
+    "@mikro-orm/mongodb": "^4.5.3",
     "@types/body-parser": "^1.19.0",
     "@types/cors": "^2.8.10",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mikro-orm": "^4.5.3",
     "nodemon": "^2.0.7"
   },
   "devDependencies": {
@@ -24,5 +28,6 @@
     "@types/node": "^14.14.37",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
-  }
+  },
+  "mikro-orm": {}
 }

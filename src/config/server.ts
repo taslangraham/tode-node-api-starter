@@ -1,5 +1,6 @@
 import { app } from "../app";
 import { configureCors } from "./cors";
+
 configureCors();
 
 const port = process.env.PORT || 8888;

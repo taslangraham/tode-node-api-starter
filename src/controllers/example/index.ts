@@ -1,12 +1,24 @@
 import { Application, Request, Response, Router } from "express";
+import { ExampleService } from "../../services/Example.service";
 
 module.exports = (app: Application, router: Router) => {
 
     /**
      * Create a new Item
      */
-    router.post("/", (req, res) => {
-        res.send("Example route - POST");
+    router.post("/", async (req, res) => {
+        // This can be easily updated to accept a body as part of the request
+        // Then use the details passed in the body to create the new Item
+        // Values were hardcoded for demonstration purposes
+        try {
+            const { success, data } = await ExampleService.save("Harry Potter First Book");
+
+            return res.status(201).send(data);
+
+        } catch (error) {
+            console.log(error);
+            return res.status(500).send("Internal Server Error");
+        }
     });
 
     /**
