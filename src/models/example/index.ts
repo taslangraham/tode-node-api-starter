@@ -4,7 +4,7 @@ import { Entity, PrimaryKey, Property } from "mikro-orm";
 
 // This is an example of a MongoDb entity class
 @Entity()
-export class ExampleEntity {
+export class ExampleModel {
 
   public get id() {
     return this._serializedId;

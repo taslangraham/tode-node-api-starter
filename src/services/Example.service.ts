@@ -1,6 +1,6 @@
 import { ORM } from "../app";
 import { ServiceReponse } from "../config/constants";
-import { ExampleEntity } from "../models/example/example.entity";
+import { ExampleModel } from "../models/example";
 class Example {
     private _foo = "foo";
 
@@ -21,9 +21,9 @@ class Example {
      * @param title Title of Example Entity
      */
     public async save(title: string) {
-        let result: ServiceReponse<ExampleEntity>;
+        let result: ServiceReponse<ExampleModel>;
         try {
-            const book = new ExampleEntity();
+            const book = new ExampleModel();
             book.title = title;
             await ORM.em.persistAndFlush(book);
 
