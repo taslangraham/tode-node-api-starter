@@ -45,4 +45,4 @@ module.exports = (app: Application, router: Router) => {
     });
 
     return router;
-}
+};

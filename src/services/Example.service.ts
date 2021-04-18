@@ -1,6 +1,6 @@
 import { ORM } from "../app";
 import { ServiceReponse } from "../config/constants";
-import { ExampleEntity } from "../entities/example/index.entity";
+import { ExampleEntity } from "../models/example/example.entity";
 class Example {
     private _foo = "foo";
 
