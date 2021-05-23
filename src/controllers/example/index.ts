@@ -1,7 +1,8 @@
 import { Application, Request, Response, Router } from "express";
 import { exampleService } from "../../services/example";
 
-module.exports = (app: Application, router: Router) => {
+module.exports = () => {
+  const router = Router();
 
   /**
    * Create a new Item
