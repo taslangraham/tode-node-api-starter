@@ -1,9 +1,9 @@
 import { MikroORM, RequestContext } from "@mikro-orm/core";
 import express, { Request, Response } from "express";
-import { initializeDatabase } from "./config/database";
+import { config as databaseConfig } from "./config/database/db-config";
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers";
-
+// import * as db from "./mikro-orm.config";
 const app = express();
 let database: MikroORM;
 
@@ -12,7 +12,7 @@ try {
 
     // Load configuration settings for Database
     // You can define the values in env.ts
-    database = await initializeDatabase();
+    database = await databaseConfig;
 
     // Add Mikro-Orm context to each request
     app.use((req, res, next) => { RequestContext.create(database.em, next); });
