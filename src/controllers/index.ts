@@ -1,12 +1,11 @@
-import { Router } from "express";
+import { Application, Router } from "express";
 import fs from "fs";
-import { app } from "../app";
 
 import { routeTable } from "../config/route-table";
 /**
  * Loads in all routes defined in controllers folder
  */
-const routes = () => {
+const routes = (app: Application) => {
   const directories = fs.readdirSync(`${__dirname}`, { withFileTypes: true });
   for (const directory of directories) {
     if (directory.isDirectory()) {

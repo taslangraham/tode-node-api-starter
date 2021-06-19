@@ -1,6 +1,5 @@
 import express, { Request, Response, Router } from "express";
 import { MikroORM, RequestContext } from "mikro-orm";
-import { loadBodyParser } from "./config";
 import { initializeDatabase } from "./config/database";
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers";
@@ -14,9 +13,6 @@ try {
     // Load configuration settings for Database
     // You can define the values in env.ts
     database = await initializeDatabase();
-
-    // Loads applications's body parser configurations
-    loadBodyParser(app);
 
     // Add Mikro-Orm context to each request
     app.use((req, res, next) => { RequestContext.create(database.em, next); });
@@ -39,7 +35,7 @@ try {
       })));
 
     // Loads in user defined routes
-    loadRoutes();
+    loadRoutes(app);
   })();
 } catch (error) {
   throw new Error(error);

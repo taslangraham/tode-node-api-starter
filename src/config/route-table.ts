@@ -29,8 +29,8 @@ class RouteTable {
         routeTableString += `\t${r.path} [${r.method.toUpperCase()}]\n`;
       });
       routeTableString += '\n';
-
     }
+
     return keys.map((routeName) => {
       const route = this.routeList[routeName];
 
