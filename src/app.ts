@@ -19,7 +19,7 @@ try {
 
     app.get("/", async (req: Request, res: Response) => {
       return res.status(200).send({
-        message: `Powered by Tode - a Nodejs Scaffolding told.\nBelow is a lost of your Application's endpoints`,
+        message: `Powered by Tode - a Nodejs Scaffolding told.\nBelow is a list of your Application's endpoints`,
         endpoints: routeTable.routes,
       },
       );
