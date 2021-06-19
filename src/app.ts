@@ -1,5 +1,5 @@
-import express, { Request, Response, Router } from "express";
-import { MikroORM, RequestContext } from "mikro-orm";
+import { MikroORM, RequestContext } from "@mikro-orm/core";
+import express, { Request, Response } from "express";
 import { initializeDatabase } from "./config/database";
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers";

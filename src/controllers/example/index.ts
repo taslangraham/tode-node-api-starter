@@ -7,7 +7,7 @@ module.exports = () => {
   /**
    * Create a new Item
    */
-  router.post("/", async (req, res) => {
+  router.get("/", async (req, res) => {
     // This can be easily updated to accept a body as part of the request
     // Then use the details passed in the body to create the new Item
     // Values were hardcoded for demonstration purposes
@@ -25,9 +25,9 @@ module.exports = () => {
   /**
    * Get all Items
    */
-  router.get("/", (req: Request, res: Response) => {
-    res.send("Example route - GET");
-  });
+  // router.get("/", (req: Request, res: Response) => {
+  //   res.send("Example route - GET");
+  // });
 
   /**
    * Get an Item by Id

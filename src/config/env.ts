@@ -1,15 +1,16 @@
 // Import Driver to be used
-import { MongoDriver } from "@mikro-orm/mongodb";
-import { Options } from "mikro-orm";
+import { Options } from "@mikro-orm/core";
+import { PostgreSqlDriver } from "@mikro-orm/postgresql";
 
 // Configuration properties for database
 const database: Options = {
-    driver: MongoDriver,
-    dbName: 'apple-store',
-    type: "mongo", // mongo || mariadb || mysql || postgresql || sqlite
-    clientUrl: 'mongodb://localhost:27017',
+  driver: PostgreSqlDriver,
+  dbName: 'mikro-test',
+  type: "postgresql", // mongo || mariadb || mysql || postgresql || sqlite
+  clientUrl: 'postgresql://postgres@localhost:5432',
+  password: 'password',
 };
 
 export const env = {
-    database,
+  database,
 };

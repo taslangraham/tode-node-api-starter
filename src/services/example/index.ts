@@ -23,21 +23,17 @@ class Example {
    */
   public async save(title: string) {
     let result: ServiceReponse<ExampleModel>;
+
     try {
       const book = new ExampleModel();
-      book.title = title;
+      book.title = 'Example Title';
       await ORM.em.persistAndFlush(book);
-
-      result = {
-        success: true,
-        data: book,
-      };
-
-      return result;
-
+      result = { success: true, data: book };
     } catch (error) {
-      throw new Error(error);
+      result = { success: true };
     }
+
+    return result;
   }
 }
 
