@@ -3,7 +3,6 @@ import express, { Request, Response } from "express";
 import { config as databaseConfig } from "./config/database/db-config";
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers";
-// import * as db from "./mikro-orm.config";
 const app = express();
 let database: MikroORM;
 
