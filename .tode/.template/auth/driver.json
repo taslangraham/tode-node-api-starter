@@ -10,7 +10,7 @@
     {
       "name": "auth.ts",
       "source": ".tode/.template/auth/middlewares/auth.ts",
-      "destination":"src/middlewares/auth.ts"
+      "destination":"src/middlewares"
     },
       {
       "name": "index.ts",
