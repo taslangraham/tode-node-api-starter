@@ -1,5 +1,5 @@
 {
-  "sourceDir": "template/model",
+  "sourceDir": ".tode/.template/model",
   "destination": "src/models",
   "files": [
     {

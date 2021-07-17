@@ -1,5 +1,5 @@
 {
-  "sourceDir": "template/service",
+  "sourceDir": ".tode/.template/service",
   "destination": "src/services",
   "files": [
     {
