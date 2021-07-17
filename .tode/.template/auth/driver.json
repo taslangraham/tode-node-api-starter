@@ -25,7 +25,7 @@
      {
       "name": "index.ts",
       "source": ".tode/.template/auth/services/user/index.ts",
-      "destination":"src/services/user/index.ts"
+      "destination":"src/services/user"
     }
   ]
 }
