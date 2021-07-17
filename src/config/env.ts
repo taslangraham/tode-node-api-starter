@@ -13,4 +13,5 @@ const database: Options = {
 
 export const env = {
   database,
+  JWT_SECRET: '',
 };

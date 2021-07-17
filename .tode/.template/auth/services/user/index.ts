@@ -22,7 +22,7 @@ class UserService {
     try {
       const user = await ORM.em.findOne(User, { email });
       result = {
-        data: user,
+        data: user || undefined,
         success: true,
       };
     } catch (error) {

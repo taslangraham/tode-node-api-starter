@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { isLoggedIn } from "../../middlewares";
+import { isLoggedIn } from "../../middlewares/auth";
 import { authService, LoginInfo } from '../../services/auth';
 import { UserCreationInfo, userService } from '../../services/user';
 
