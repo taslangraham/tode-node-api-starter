@@ -18,11 +18,11 @@ const routes = (app: Application) => {
       const routeInfo = routeDef.stack.map((s) => ({
         name: directory.name,
         path: '/' + directory.name + s.route.path,
-        method: Object.keys(s.route.methods)[0]
+        method: Object.keys(s.route.methods)[0],
       }));
       // Stores detail about the route
       // this is used tpo provide a print out of all routes
-      // when you navigate to base routre, /
+      // when you navigate to base route, /
       routeTable.register(routeInfo);
     }
   }
