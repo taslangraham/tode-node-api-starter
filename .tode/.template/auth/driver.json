@@ -1,6 +1,6 @@
 {
   "sourceDir": ".tode/.template/auth",
-  "destination": "src/models",
+  "destination": "",
   "files": [
     {
       "name": "index.ts",
@@ -27,5 +27,13 @@
       "source": ".tode/.template/auth/services/user/index.ts",
       "destination":"src/services/user"
     }
-  ]
+  ],
+	"dependencies":[
+		"jsonwebtoken",
+		"bcryptjs"
+	],
+	"devDependencies":[
+		"@types/bcryptjs",
+		"@types/jsonwebtoken"
+	]
 }
