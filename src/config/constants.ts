@@ -7,3 +7,5 @@ export interface ServiceReponse<T> {
 export interface Lookup<R = unknown> {
   [key: string]: R;
 }
+
+export const Base10 = 10;
