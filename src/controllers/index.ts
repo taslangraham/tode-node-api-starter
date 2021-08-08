@@ -1,7 +1,7 @@
 import { Application, Router } from "express";
 import fs from "fs";
-
 import { routeTable } from "../config/route-table";
+
 /**
  * Loads in all routes defined in controllers folder
  */
@@ -11,15 +11,19 @@ const routes = (app: Application) => {
     if (directory.isDirectory()) {
 
       const routeDef: Router = require(`./${directory.name}`)();
+      // Register route
       app.use(`/${directory.name}`, routeDef);
 
-      const transformed = routeDef.stack.map((s) => ({
+      // Create an object with details about the route
+      const routeInfo = routeDef.stack.map((s) => ({
         name: directory.name,
         path: '/' + directory.name + s.route.path,
         method: Object.keys(s.route.methods)[0]
       }));
-
-      routeTable.register(transformed);
+      // Stores detail about the route
+      // this is used tpo provide a print out of all routes
+      // when you navigate to base routre, /
+      routeTable.register(routeInfo);
     }
   }
 };
