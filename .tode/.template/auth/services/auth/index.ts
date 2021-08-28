@@ -4,7 +4,7 @@ import { ServiceReponse } from "../../config/constants";
 import { User } from '../../models/user';
 
 import { env } from '../../config/env';
-import { hashCompare } from "../../lib";
+import { hashCompare } from "../../.tode/lib";
 const TOKEN_TIME_TO_LIVE = 86400; // 24 hours
 const { JWT_SECRET } = env;
 
