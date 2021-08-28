@@ -24,7 +24,6 @@ module.exports = () => {
 			if (success && data) { return res.status(409).send({ message: 'User already exist' }); }
 
 			const result = await userService.createUser(userInfo);
-
 			const createdUser = result.data;
 			// create JWT
 			const token = authService.createTokenFromUser(createdUser as User);
