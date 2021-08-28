@@ -1,6 +1,6 @@
+import { stringHash } from "../../../.tode/lib/index";
 import { ORM } from "../../app";
 import { ServiceReponse } from "../../config/constants";
-import { stringHash } from "../../../../lib";
 import { User } from '../../models/user';
 
 export interface UserCreationInfo {
