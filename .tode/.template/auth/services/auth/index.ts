@@ -1,8 +1,8 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import { hashCompare } from "../../../.tode/lib";
 import { ORM } from "../../app";
 import { ServiceReponse } from "../../config/constants";
 import { User } from '../../models/user';
-import { hashCompare } from "../../../.tode/lib"; import { hashCompare } from "../../../.tode/lib";
 import { env } from '../../config/env';
 const TOKEN_TIME_TO_LIVE = 86400; // 24 hours
 const { JWT_SECRET } = env;
