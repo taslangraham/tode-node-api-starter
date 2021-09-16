@@ -1,3 +1,3 @@
 /**
- * Class list of custom denied Errors
+ * Class list of custom defined Errors
  */
