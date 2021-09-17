@@ -1,20 +1,15 @@
-import { MikroORM, RequestContext } from "@mikro-orm/core";
 import express, { Request, Response } from "express";
 import { config as databaseConfig } from "./config/database/db-config";
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers";
 const app = express();
-let database: MikroORM;
 
 try {
   (async () => {
 
     // Load configuration settings for Database
     // You can define the values in env.ts
-    database = await databaseConfig;
-
-    // Add Mikro-Orm context to each request
-    app.use((req, res, next) => { RequestContext.create(database.em, next); });
+    await databaseConfig;
 
     app.get("/", async (req: Request, res: Response) => {
       return res.status(200).send({
@@ -37,10 +32,9 @@ try {
     loadRoutes(app);
   })();
 } catch (error) {
-  throw new Error(error);
+  throw new Error(error as string);
 }
 
 export {
   app,
-  database as ORM,
 };
