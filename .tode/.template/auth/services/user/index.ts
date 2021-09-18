@@ -1,5 +1,4 @@
 import { stringHash } from "../../../.tode/lib/index";
-import { ORM } from "../../app";
 import { ServiceReponse } from "../../config/constants";
 import { User } from '../../models/user';
 
@@ -20,13 +19,13 @@ class UserService {
     let result: ServiceReponse<User>;
 
     try {
-      const user = await ORM.em.findOne(User, { email });
+      const user = await User.query().findOne({ email });
       result = {
         data: user || undefined,
         success: true,
       };
     } catch (error) {
-      throw new Error(`[ Find By Email Error ]: ${error.message}`);
+      throw new Error(`[ Find By Email Error ]: ${error}`);
     }
 
     return result;
@@ -35,14 +34,12 @@ class UserService {
   public async createUser(userInfo: UserCreationInfo) {
     let result: ServiceReponse<User>;
     try {
-      const user = ORM.em.create(User, {
+      const user = await User.query().insert({
         email: userInfo.email,
         firstName: userInfo.firstName,
         lastName: userInfo.lastName,
         password: await stringHash(userInfo.password),
       });
-
-      await ORM.em.persistAndFlush(user);
 
       result = {
         data: user,

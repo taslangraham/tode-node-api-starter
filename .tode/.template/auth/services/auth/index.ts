@@ -1,6 +1,5 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { hashCompare } from "../../../.tode/lib";
-import { ORM } from "../../app";
 import { ServiceReponse } from "../../config/constants";
 import { env } from '../../config/env';
 import { User } from '../../models/user';
@@ -32,7 +31,7 @@ class Auth {
 	 */
 	public createTokenFromUser(user: User) {
 		const body = {
-			id: user && user?._id,
+			id: user && user.$id,
 			firstName: user && user.firstName,
 			email: user && user.email,
 			lastName: user && user.lastName,
@@ -64,7 +63,7 @@ class Auth {
 		let result: ServiceReponse<User> = { success: false };
 
 		try {
-			const user = await ORM.em.findOne(User, { email: credentials.email });
+			const user = await User.query().findOne({ email: credentials.email });
 
 			if (user === null) {
 				result = {

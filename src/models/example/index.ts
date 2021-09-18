@@ -1,17 +1,13 @@
-import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
+import BaseModel from "../BaseMode";
 
-@Entity()
-export class ExampleModel {
-  /**
-   * Getter For Primary Key'id'
-   */
-  public get _id() {
-    return this.id;
-  }
+export class Example extends BaseModel {
+  // Table name is the only required property.
+  public static tableName = 'example';
 
-  @Property()
-  public title!: string;
-
-  @PrimaryKey()
-  private id!: number;
+  public name!: string;
+  // This object defines the relations to other models. The relationMappings
+  // property can be a thunk to prevent circular dependencies.
+  public static relationMappings = () => ({
+    // specify relation with other modules
+  })
 }

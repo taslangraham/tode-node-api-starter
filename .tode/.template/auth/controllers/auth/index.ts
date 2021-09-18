@@ -18,6 +18,7 @@ module.exports = () => {
 			// TODO
 			// check if all fields exist on request body and that their data type is correct
 			const userInfo: UserCreationInfo = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+			console.log('body', req.body)
 			const { data, success } = await userService.findUserByEmail(userInfo.email);
 
 			if (!success) { return res.status(500).send({ message: 'Internal server error' }); }
@@ -30,7 +31,7 @@ module.exports = () => {
 
 			return res.status(200).send({ token });
 		} catch (error) {
-			console.log('[Register Error ]:', error.message);
+			console.log('[Register Error ]:', error);
 			return res.status(500).send({ message: 'Internal server error' });
 		}
 	});

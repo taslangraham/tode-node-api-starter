@@ -1,4 +1,3 @@
-import { ORM } from "../../app";
 import { ServiceReponse } from "../../config/constants";
 
 class ServiceClassName {

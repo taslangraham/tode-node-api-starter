@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "member-ordering":false,
         "no-console": false,
         "variable-name": false,
         "quotemark": false,

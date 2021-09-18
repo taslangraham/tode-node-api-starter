@@ -1,6 +1,5 @@
-import { ORM } from "../../app";
 import { ServiceReponse } from "../../config/constants";
-import { ExampleModel } from "../../models/example";
+import { Example as ExampleModel } from "../../models/example";
 
 class Example {
   private _foo = "foo";
@@ -25,10 +24,8 @@ class Example {
     let result: ServiceReponse<ExampleModel>;
 
     try {
-      const book = new ExampleModel();
-      book.title = 'Example Title';
-      await ORM.em.persistAndFlush(book);
-      result = { success: true, data: book };
+      const example = new ExampleModel();
+      result = { success: true, data: example };
     } catch (error) {
       result = { success: true };
     }

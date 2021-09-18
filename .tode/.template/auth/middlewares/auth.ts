@@ -25,7 +25,7 @@ export const isLoggedIn = (req: Request, res: Response, next: NextFunction) => {
 
     return next();
   } catch (error) {
-    console.log(`[ Auth middleware Error ]: ${error.message}`);
-    return res.status(403).send({ auth: false, message: error.message });
+    console.log(`[ Auth middleware Error ]: ${error}`);
+    return res.status(403).send({ auth: false, message: JSON.stringify(error) });
   }
 };

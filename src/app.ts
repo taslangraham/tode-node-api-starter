@@ -1,16 +1,21 @@
 import express, { Request, Response } from "express";
+import Knex from 'knex';
+import { Model } from 'objection';
+import knexConfig from '../knexfile';
 import { config as databaseConfig } from "./config/database/db-config";
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers";
+
+// Initialize knex.
+const knex = Knex(knexConfig.development);
+// Bind all Models to a knex instance. If you only have one database in
+// your server this is all you have to do. For multi database systems, see
+// the Model.bindKnex() method.
+Model.knex(knex);
 const app = express();
 
 try {
   (async () => {
-
-    // Load configuration settings for Database
-    // You can define the values in env.ts
-    await databaseConfig;
-
     app.get("/", async (req: Request, res: Response) => {
       return res.status(200).send({
         message: `Powered by Tode - a Nodejs Scaffolding told.\nBelow is a list of your Application's endpoints`,
