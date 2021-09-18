@@ -18,7 +18,6 @@ module.exports = () => {
 			// TODO
 			// check if all fields exist on request body and that their data type is correct
 			const userInfo: UserCreationInfo = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-			console.log('body', req.body)
 			const { data, success } = await userService.findUserByEmail(userInfo.email);
 
 			if (!success) { return res.status(500).send({ message: 'Internal server error' }); }
@@ -47,7 +46,15 @@ module.exports = () => {
 				return res.status(400).send({ message: 'Missing required fields' });
 			}
 
-			const { data: user } = await authService.login(loginInfo);
+			const { data: user, success } = await authService.login(loginInfo);
+
+			if (!success) {
+				return res.status(500).send({
+					auth: false,
+					message: 'Internal server error',
+				});
+			}
+
 			if (user === null || user === undefined) {
 				return res.status(401).send({
 					auth: false,

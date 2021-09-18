@@ -61,13 +61,13 @@ class Auth {
 	 */
 	public async login(credentials: LoginInfo) {
 		let result: ServiceReponse<User> = { success: false };
-
 		try {
-			const user = await User.query().findOne({ email: credentials.email });
+			const user = await User.query().findOne({ email: credentials.email }) || null;
 
 			if (user === null) {
 				result = {
-					success: false,
+					success: true,
+					data: user,
 				};
 			} else {
 				const isCorrectPassword = await hashCompare(credentials.password, user.password);
