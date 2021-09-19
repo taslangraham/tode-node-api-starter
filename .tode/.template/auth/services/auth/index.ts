@@ -31,7 +31,7 @@ class Auth {
 	 */
 	public createTokenFromUser(user: User) {
 		const body = {
-			id: user && user.$id,
+			id: user && user.$id(),
 			firstName: user && user.firstName,
 			email: user && user.email,
 			lastName: user && user.lastName,
