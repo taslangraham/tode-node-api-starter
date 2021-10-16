@@ -1,24 +1,15 @@
 import express, { Request, Response } from "express";
-import Knex from 'knex';
-import { Model } from 'objection';
-import knexConfig from '../knexfile';
-import { loadBodyParser } from "./config";
-import { config as databaseConfig } from "./config/database/db-config";
+import { configureCors, loadBodyParser } from "./config";
+import { initializeDatabase } from './config/database/db-config';
 import { routeTable } from "./config/route-table";
-import { loadRoutes } from "./controllers";
-
-// Initialize knex.
-const knex = Knex(knexConfig.development);
-// Bind all Models to a knex instance. If you only have one database in
-// your server this is all you have to do. For multi database systems, see
-// the Model.bindKnex() method.
-Model.knex(knex);
+import { loadRoutes } from "./controllers/index";
 const app = express();
+const PORT = process.env.PORT || 6767;
 
 try {
+  configureCors(app);
   loadBodyParser(app);
-  // Load configuration settings for Database
-  // You can define the values in env.ts
+  initializeDatabase();
 
   app.get("/", async (req: Request, res: Response) => {
     return res.status(200).send({
@@ -37,9 +28,15 @@ try {
       method: Object.keys(r.route.methods)[0],
     })));
 
-  // Loads in user defined routes
+  // Loads in user defined routes 1 level
   loadRoutes(app);
+
+  app.listen(PORT, () => {
+    console.log("Your app is running on " + PORT);
+  });
+
 } catch (error) {
+  console.log(error);
   throw new Error(error as string);
 }
 
