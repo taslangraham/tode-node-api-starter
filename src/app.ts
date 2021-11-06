@@ -1,45 +1,69 @@
-import express, { Request, Response } from "express";
+import express, { Application, Request, Response } from "express";
 import { configureCors, loadBodyParser } from "./config";
 import { initializeDatabase } from './config/database/db-config';
 import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers/index";
-const app = express();
-const PORT = process.env.PORT || 6767;
+class App {
+  private app: Application;
+  private PORT = process.env.PORT || 8888;
 
-try {
-  configureCors(app);
-  loadBodyParser(app);
-  initializeDatabase();
+  constructor() {
+    this.app = express();
+  }
 
-  app.get("/", async (req: Request, res: Response) => {
-    return res.status(200).send({
-      message: `Powered by Tode - a Nodejs Scaffolding told.\nBelow is a list of your Application's endpoints`,
-      endpoints: routeTable.routes,
-    },
-    );
-  });
+  public initiatlize() {
+    try {
+      configureCors(this.app);
+      loadBodyParser(this.app);
+      initializeDatabase();
+      this.registerBaseRoute();
+      loadRoutes(this.app);
+      this.addListener();
 
-  // register the entry route above
-  routeTable.register(app._router.stack
-    .filter((s: { route: any; }) => s.route)
-    .map((r: any) => ({
-      name: '/',
-      path: r.route.path,
-      method: Object.keys(r.route.methods)[0],
-    })));
+    } catch (error) {
+      console.log(error);
+      throw new Error(error as string);
+    }
+  }
 
-  // Loads in user defined routes 1 level
-  loadRoutes(app);
+  /**
+   * Add the base route, '/', to the route table
+   */
+  private addBaseRouteToRouteTable() {
+    // register the entry route above
+    routeTable.register(this.app._router.stack
+      .filter((s: { route: any; }) => s.route)
+      .map((r: any) => ({
+        name: '/',
+        path: r.route.path,
+        method: Object.keys(r.route.methods)[0],
+      })));
+  }
 
-  app.listen(PORT, () => {
-    console.log("Your app is running on " + PORT);
-  });
+  /**
+   * Registers the base route, '/'
+   */
+  private registerBaseRoute() {
+    this.app.get("/", async (req: Request, res: Response) => {
+      return res.status(200).send({
+        message: `Powered by Tode - a Nodejs Scaffolding told.
+      Below is a list of your Application's endpoints.
+      Nested routes are currently not shown.`,
+        endpoints: routeTable.routes,
+      });
+    });
+  }
 
-} catch (error) {
-  console.log(error);
-  throw new Error(error as string);
+  /**
+   * Adds listener for the app
+   */
+  private addListener() {
+    const PORT = this.PORT;
+    this.app.listen(PORT, () => {
+      console.log("Your app is running on " + PORT);
+    });
+  }
 }
 
-export {
-  app,
-};
+const app = new App();
+app.initiatlize();
