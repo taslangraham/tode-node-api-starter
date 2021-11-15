@@ -1,9 +1,9 @@
 import { stringHash } from "../../../.tode/lib/index";
 import { ServiceReponse } from "../../config/constants";
+import { getFieldsWithMissingValue } from "../../helpers/requiredFields";
 import { User } from '../../models/user';
 import { AuthErrorCode, GeneralErrorCode } from "../../modules/constants";
 import { UserInfo } from "../../modules/entity/auth";
-import { findMissingFields, getFieldsWithMissingValue } from "../../helpers/requiredFields";
 
 export interface UserCreationInfo {
   email: string;
@@ -64,7 +64,7 @@ class UserService {
             success: false,
             errorMessage: `An account already exists for the email "${userInfo.email}"`,
           };
-        } else if (canCreateUser) { result = await this.createUser(userInfo); }
+        } else if (canCreateUser) { result = await this.saveUser(userInfo); }
       }
     } catch (error) {
       console.error(error);
