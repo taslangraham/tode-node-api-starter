@@ -2,12 +2,12 @@
 export default {
 
   development: {
-    client: "postgresql",
+    client: "",
     connection: {
       database: "",
       user: "",
       password: "",
-      port: "",
+      port: 0,
     },
     seeds: {
       directory: 'src\\data-access\\seeds'
@@ -19,19 +19,19 @@ export default {
   },
 
   production: {
-    client: "",
+    client: " ",
     connection: {
-      database: "",
-      user: "",
-      password: "",
+      database: " ",
+      user: " ",
+      password: " "
     },
     pool: {
       min: 2,
-      max: 10,
+      max: 10
     },
     migrations: {
-      tableName: "",
-    },
-  },
+      tableName: ""
+    }
+  }
 
 };
