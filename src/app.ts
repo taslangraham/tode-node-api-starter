@@ -5,7 +5,7 @@ import { routeTable } from "./config/route-table";
 import { loadRoutes } from "./controllers/index";
 class App {
   private app: Application;
-  private PORT = process.env.PORT || 8888;
+  private PORT = process.env.PORT || 8080;
 
   constructor() {
     this.app = express();

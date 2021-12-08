@@ -1,13 +1,27 @@
 import Knex from 'knex';
 import { Model } from 'objection';
-import knexConfig from '../../../knexfile';
+import { env } from '../env';
+
+const DATABASE = env.database;
 
 function initializeDatabase() {
   // Initialize knex.
   // Bind all Models to a knex instance. If you only have one database in
   // your server this is all you have to do. For multi database systems, see
-  const knex = Knex(knexConfig.development);
-  Model.knex(knex);
+  if (env.database.isEnabled) {
+    const knex = Knex({
+      client: DATABASE.client,
+      connection: {
+        database: DATABASE.name,
+        user: DATABASE.user,
+        password: DATABASE.password,
+        port: DATABASE.port,
+      },
+      seeds: DATABASE.seeds,
+      migrations: DATABASE.migrations,
+    });
+    Model.knex(knex);
+  }
 }
 
 export { initializeDatabase };
