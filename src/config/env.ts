@@ -17,7 +17,6 @@ interface Process extends NodeJS.ProcessEnv {
 }
 
 const processEnv = process.env as Process;
-
 // Configuration properties for database
 const database = {
   isEnabled: (processEnv.IS_DB_ENABLED as unknown) as boolean,
