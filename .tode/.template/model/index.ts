@@ -7,10 +7,9 @@ export class ModelClassName extends BaseModel {
   // Example property
   public foo!: string;
 
-  // Add other tbale fields (columns) as properties to access them via the model
+  // Add other table fields (columns) as properties to access them via the model
 
-  // This object defines the relations to other models. The relationMappings
-  // property can be a thunk to prevent circular dependencies.
+  //  Define the relations to other models.
   // READ MORE at https://vincit.github.io/objection.js/guide/relations.html
   public static relationMappings = () => ({
     // specify relation with other modules
