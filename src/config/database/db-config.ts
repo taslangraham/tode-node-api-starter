@@ -24,5 +24,4 @@ function initializeDatabase() {
     Model.knex(knex);
   }
 }
-
 export { initializeDatabase, connnection };
