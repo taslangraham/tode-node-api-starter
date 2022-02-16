@@ -6,6 +6,7 @@ import express, { Application } from "express";
  * @param app - Express Applocation instance
  */
 export const loadBodyParser = (app: Application) => {
+
   // Used to parse JSON bodies
   app.use(express.urlencoded({ extended: true }));
   // Parse URL-encoded bodies

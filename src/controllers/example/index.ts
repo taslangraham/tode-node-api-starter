@@ -1,49 +1,30 @@
-import { Application, Request, Response, Router } from "express";
 import { exampleService } from "../../services/example";
+import { Request, Response } from "../../config/core";
 
-module.exports = () => {
-  const router = Router();
+export function index(request: Request, response: Response) {
+  response.send("/example");
+}
 
-  /**
-   * Create a new Item
-   */
-  router.post("/", async (req, res) => {
+export async function store(request: Request, response: Response) {
     // This can be easily updated to accept a body as part of the request
     // Then use the details passed in the body to create the new Item
     // Values were hardcoded for demonstration purposes
     try {
-      const { success, data } = await exampleService.save("Harry Potter First Book");
+      const { success, data } = await exampleService.save("Harry Potter");
 
-      return res.status(201).send(data);
+      return response.status(201).send(data);
 
     } catch (error) {
       console.log(error);
-      return res.status(500).send("Internal Server Error");
+      return response.status(500).send("Internal Server Error");
     }
-  });
+}
 
-  /**
-   * Get all Items
-   */
-  router.get("/", (req: Request, res: Response) => {
-    res.send("Example route - GET");
-  });
+export function show(request: Request, response: Response) {}
 
-  /**
-   * Get an Item by Id
-   */
-  router.get("/:id", (req: Request, res: Response) => {
-    res.send("Example route - GET /id");
+export function edit(request: Request, response: Response) {}
 
-  });
+export function update(request: Request, response: Response) { }
 
-  /**
-   * Update an Item
-   */
-  router.patch("/:id", (req: Request, res: Response) => {
-    res.send("Example route - PATCH /id");
+export function destroy(request: Request, response: Response) {}
 
-  });
-
-  return router;
-};

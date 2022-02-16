@@ -1,6 +1,6 @@
 import Knex from 'knex';
 import { Model } from 'objection';
-import { env } from '../env';
+import { env } from '../../../env';
 
 const DATABASE = env.database;
 const connnection = {

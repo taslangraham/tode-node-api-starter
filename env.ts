@@ -1,9 +1,8 @@
 /**
  * Loads in application environment variables
  */
-
 import { config as initEnv } from 'dotenv';
-import { Base10 } from "./constants";
+import { Base10 } from "./src/config/constants";
 initEnv();
 
 interface Process extends NodeJS.ProcessEnv {
@@ -35,7 +34,10 @@ const database = {
   },
 };
 
+const projectDirectory = __dirname;
+
 export const env = {
   database,
   JWT_SECRET: processEnv.JWT_SECRET,
+  projectDirectory,
 };
