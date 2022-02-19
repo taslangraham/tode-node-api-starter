@@ -3,7 +3,7 @@
   "destination": "",
   "files": [
     {
-      "name": "index.ts",
+      "name": "index.txt",
       "source": ".tode/.template/auth/controllers/auth/index.ts",
       "destination":"src/controllers/auth"
     },

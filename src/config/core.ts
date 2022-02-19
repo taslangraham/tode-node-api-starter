@@ -2,6 +2,7 @@ import { Response as ExpressResponse, Request as ExpressRequest, NextFunction } 
 import middleware  from "../middlewares";
 import { app } from '../app'
 
+// tslint:disable-next-line: no-empty-interface
 export interface Response extends ExpressResponse { }
 export interface Request extends ExpressRequest {
   Auth?: {
