@@ -3,7 +3,7 @@
   "destination": "",
   "files": [
     {
-      "name": "index.txt",
+      "name": "index.ts",
       "source": ".tode/.template/auth/controllers/auth/index.ts",
       "destination":"src/controllers/auth"
     },
@@ -35,5 +35,9 @@
 	"devDependencies":[
 		"@types/bcryptjs",
 		"@types/jsonwebtoken"
-	]
+	],
+  "routes":[
+    "App.post('/auth/register', loadController('auth.store'));",
+    "App.post('/auth/login', loadController('auth.login'));"
+  ]
 }
