@@ -9,6 +9,6 @@
 import Example from './example';
 
 const middleware = {
-	example: Example,
+  example: Example,
 }
 export default middleware;

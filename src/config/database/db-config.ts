@@ -13,7 +13,7 @@ const connnection = {
   },
   seeds: DATABASE.seeds,
   migrations: DATABASE.migrations,
-}
+};
 
 function initializeDatabase() {
 

@@ -20,7 +20,9 @@ export async function store(request: Request, response: Response) {
     }
 }
 
-export function show(request: Request, response: Response) {}
+export function show(request: Request, response: Response) {
+  return response.json(request.Auth)
+}
 
 export function edit(request: Request, response: Response) {}
 

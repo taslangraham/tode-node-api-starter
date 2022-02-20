@@ -3,8 +3,8 @@
 | Routes
 |--------------------------------------------------------------------------
 |
-| This file is dedicated for defining HTTP routes. A single file is enough
-| for majority of projects, however you can define routes in different
+| This file is dedicated for defining HTTP routes. A single file can be enough for your project,
+	however you can define routes in different
 | files and just make sure to import them inside this file. For example
 |
 | Define routes in following two files
@@ -20,7 +20,7 @@
 import { App, loadController, Response, Request, withMiddleware } from '../config/core';
 
 App.get("/", async (request: Request, response: Response) => {
-	return response.status(200).send(`Powered by Tode - a Nodejs Scaffolding told.`)
+	return response.status(200).send(`Powered by Tode - a Nodejs Scaffolding told.`);
 })
 
-App.get('/example', loadController('example.index'))
+App.get('/example', loadController('example.index'));

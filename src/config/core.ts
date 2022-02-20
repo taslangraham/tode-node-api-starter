@@ -20,14 +20,14 @@ export interface Request extends ExpressRequest {
  * @returns
  */
 function registerController(name: string) {
-	if (typeof name !== 'string') {
-		throw new Error('Controller parameter for route must be a string')
-	}
+  if (typeof name !== 'string') {
+    throw new Error('Controller parameter for route must be a string')
+  }
 
-	const [controllerFileName, functionName] = name.split('.');
-	const controllerPath = `../controllers/${controllerFileName}`;
+  const [controllerFileName, functionName] = name.split('.');
+  const controllerPath = `../controllers/${controllerFileName}`;
 
-	return require(controllerPath)[functionName];
+  return require(controllerPath)[functionName];
 }
 
 
@@ -37,29 +37,29 @@ function registerController(name: string) {
  * @returns
  */
 function withMiddleware(name: string | string[]) {
-	const middlewareNames = [...arguments];
-	const middlewares: ((req: Request, res: Response, next: NextFunction) => void)[] = []
+  const middlewareNames = [...arguments];
+  const middlewares: ((req: Request, res: Response, next: NextFunction) => void)[] = []
 
-	for (name of middlewareNames) {
-		const middlewareClass = middleware[name as keyof typeof middleware]
-		const handler = new middlewareClass().handler
-		middlewares.push(handler)
-	}
+  for (name of middlewareNames) {
+    const middlewareClass = middleware[name as keyof typeof middleware]
+    const handler = new middlewareClass().handler
+    middlewares.push(handler)
+  }
 
-	return middlewares;
+  return middlewares;
 }
 
 enum HttpMethod{
-	GET = 'get',
-	POST = 'post',
-	DELETE = 'delete',
-	PATCH = 'patch',
-	PUT = 'put',
+  GET = 'get',
+  POST = 'post',
+  DELETE = 'delete',
+  PATCH = 'patch',
+  PUT = 'put',
 }
 
 export {
-	app as App,
-	registerController as loadController,
+  app as App,
+  registerController as loadController,
   withMiddleware,
   HttpMethod
 }
