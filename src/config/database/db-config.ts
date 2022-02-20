@@ -10,6 +10,7 @@ const connnection = {
     user: DATABASE.user,
     password: DATABASE.password,
     port: DATABASE.port,
+    client:DATABASE.host,
   },
   seeds: DATABASE.seeds,
   migrations: DATABASE.migrations,

@@ -13,6 +13,7 @@ interface Process extends NodeJS.ProcessEnv {
   DB_USER: string;
   JWT_SECRET: string;
   IS_DB_ENABLED: string;
+  DB_HOST: string;
 }
 
 const processEnv = process.env as Process;
@@ -25,12 +26,13 @@ const database = {
   user: processEnv.DB_USER,
   password: processEnv.DB_PASSWORD,
   port: Number.parseInt(processEnv.DB_PORT, Base10),
+  host: processEnv.DB_HOST,
   seeds: {
-    directory: 'src\\data-access\\seeds'
+    directory: 'src\\database\\seeders'
   },
   migrations: {
     tableName: "knex_migrations",
-    directory: 'src\\data-access\\migrations',
+    directory: 'src\\database\\migrations',
   },
 };
 
