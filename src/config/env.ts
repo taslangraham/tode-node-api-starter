@@ -29,11 +29,11 @@ const database = {
   port: Number.parseInt(processEnv.DB_PORT, Base10),
   host: processEnv.DB_HOST,
   seeds: {
-    directory: 'src\\data-access\\seeds'
+    directory: 'src\\database\\seeders'
   },
   migrations: {
     tableName: "knex_migrations",
-    directory: 'src\\data-access\\migrations',
+    directory: 'src\\database\\migrations',
   },
 };
 
