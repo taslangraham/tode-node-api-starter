@@ -1,4 +1,4 @@
-import { ServiceReponse } from "../../config/constants";
+import { ServiceResponse } from "../../config/constants";
 import { Example as ExampleModel } from "../../models/example";
 
 class Example {
@@ -21,7 +21,7 @@ class Example {
    * @param title Title of Example Entity
    */
   public async save(title: string) {
-    let result: ServiceReponse<ExampleModel>;
+    let result: ServiceResponse<ExampleModel>;
 
     try {
       const example = new ExampleModel();

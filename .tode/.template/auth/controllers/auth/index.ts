@@ -3,7 +3,7 @@
  * Feel free to modify logic/validations to match your needs
  */
 
- import { ServiceReponse } from "../../config/constants";
+ import { ServiceResponse } from "../../config/constants";
  import { User } from "../../models/user";
  import { AuthErrorCode, GeneralErrorCode } from "../../modules/constants";
  import { UserInfo } from "../../modules/entity/auth";
@@ -23,7 +23,7 @@
 
  export async function store(request: Request, response: Response) {
    {
-     let result: ServiceReponse<{ user: UserInfo; token?: string; refreshToken?: string; }>;
+     let result: ServiceResponse<{ user: UserInfo; token?: string; refreshToken?: string; }>;
      let statusCode = 200;
 
      try {
