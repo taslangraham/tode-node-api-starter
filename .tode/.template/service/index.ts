@@ -1,4 +1,4 @@
-import { ServiceReponse } from "../../config/constants";
+import { ServiceResponse } from "../../config/constants";
 
 class ServiceClassName {
   private _foo = "foo";
