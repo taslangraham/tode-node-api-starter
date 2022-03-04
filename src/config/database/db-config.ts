@@ -3,7 +3,7 @@ import { Model } from 'objection';
 import { env } from '../../../env';
 
 const DATABASE = env.database;
-const connnection = {
+const connection = {
   client: DATABASE.client,
   connection: {
     database: DATABASE.name,
@@ -21,8 +21,8 @@ function initializeDatabase() {
   // Initialize knex.
   // Bind all Models to a knex instance.
   if (env.database.isEnabled) {
-    const knex = Knex(connnection);
+    const knex = Knex(connection);
     Model.knex(knex);
   }
 }
-export { initializeDatabase, connnection };
+export { initializeDatabase, connection };
