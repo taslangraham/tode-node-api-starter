@@ -4,7 +4,7 @@
 | Register Middlewares
 |--------------------------------------------------------------------------
 |
-| Import individual lmiddlewares, and export them
+| Import individual Middlewares, and export them
 */
 import Example from './example';
 
