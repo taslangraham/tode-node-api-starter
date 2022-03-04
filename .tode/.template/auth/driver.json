@@ -35,5 +35,9 @@
 	"devDependencies":[
 		"@types/bcryptjs",
 		"@types/jsonwebtoken"
-	]
+	],
+  "routes":[
+    "App.post('/auth/register', loadController('auth.store'));",
+    "App.post('/auth/login', loadController('auth.login'));"
+  ]
 }

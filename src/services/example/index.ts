@@ -25,6 +25,7 @@ class Example {
 
     try {
       const example = new ExampleModel();
+      example.name = title;
       result = { success: true, data: example };
     } catch (error) {
       result = { success: true };
