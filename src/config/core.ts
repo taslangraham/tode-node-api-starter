@@ -1,6 +1,11 @@
-import { Response as ExpressResponse, Request as ExpressRequest, NextFunction } from 'express';
-import middleware  from "../middlewares";
+import express, {
+  Response as ExpressResponse,
+  Request as ExpressRequest,
+  NextFunction
+} from 'express';
+import middleware from "../middlewares";
 import { app } from '../app'
+const Router = express.Router;
 
 // tslint:disable-next-line: no-empty-interface
 export interface Response extends ExpressResponse { }
@@ -49,7 +54,7 @@ function withMiddleware(name: string | string[]) {
   return middlewares;
 }
 
-enum HttpMethod{
+enum HttpMethod {
   GET = 'get',
   POST = 'post',
   DELETE = 'delete',
@@ -61,5 +66,6 @@ export {
   app as App,
   registerController as loadController,
   withMiddleware,
-  HttpMethod
+  HttpMethod,
+  Router
 }

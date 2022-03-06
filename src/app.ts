@@ -12,14 +12,13 @@ class Server {
     this.app = appInstance;
   }
 
-  public initiatlize() {
+  public initialize() {
     try {
       configureCors(this.app);
       loadBodyParser(this.app);
       initializeDatabase();
       require('./routes')
       this.addListener();
-
     } catch (error) {
       console.log(error);
       throw new Error(error as string);
@@ -37,6 +36,6 @@ class Server {
 }
 
 const server = new Server(app);
-server.initiatlize();
+server.initialize();
 
 export { app }
