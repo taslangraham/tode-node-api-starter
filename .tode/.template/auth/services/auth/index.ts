@@ -1,6 +1,6 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { hashCompare } from "../../../.tode/lib";
-import { ServiceReponse } from "../../config/constants";
+import { ServiceResponse } from "../../config/constants";
 import { env } from '../../../env';
 import { User } from '../../models/user';
 const TOKEN_TIME_TO_LIVE = 86400; // 24 hours
@@ -60,7 +60,7 @@ class Auth {
 	 * @param credentials
 	 */
 	public async login(credentials: LoginInfo) {
-		let result: ServiceReponse<User> = { success: false };
+		let result: ServiceResponse<User> = { success: false };
 		try {
 			const user = await User.query().findOne({ email: credentials.email }) || null;
 
