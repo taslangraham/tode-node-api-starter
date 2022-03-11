@@ -1,5 +1,5 @@
 import { stringHash } from "../../../.tode/lib/index";
-import { ServiceReponse } from "../../config/constants";
+import { ServiceResponse } from "../../config/constants";
 import { getFieldsWithMissingValue } from "../../helpers/requiredFields";
 import { User } from '../../models/user';
 import { AuthErrorCode, GeneralErrorCode } from "../../modules/constants";
@@ -19,7 +19,7 @@ class UserService {
   }
 
   public async findUserByEmail(email: string) {
-    let result: ServiceReponse<User>;
+    let result: ServiceResponse<User>;
 
     try {
       const user = await User.query().findOne({ email });
@@ -34,7 +34,7 @@ class UserService {
     return result;
   }
   public async createUser(registrationInfo: UserCreationInfo) {
-    let result: ServiceReponse<UserInfo> = { success: false };
+    let result: ServiceResponse<UserInfo> = { success: false };
     try {
       // Check if  there's any missing fields
       const missingFields = getFieldsWithMissingValue(registrationInfo, ['firstName', 'lastName', 'email', 'password']);
@@ -79,7 +79,7 @@ class UserService {
   }
 
   private async saveUser(userInfo: UserCreationInfo) {
-    let result: ServiceReponse<UserInfo>;
+    let result: ServiceResponse<UserInfo>;
     try {
       const user = await User.query().insert({
         email: userInfo.email,

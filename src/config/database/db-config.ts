@@ -1,9 +1,9 @@
 import Knex from 'knex';
 import { Model } from 'objection';
-import { env } from '../env';
+import { env } from '../../../env';
 
 const DATABASE = env.database;
-const connnection = {
+const connection = {
   client: DATABASE.client,
   connection: {
     database: DATABASE.name,
@@ -14,15 +14,15 @@ const connnection = {
   },
   seeds: DATABASE.seeds,
   migrations: DATABASE.migrations,
-}
+};
 
 function initializeDatabase() {
 
   // Initialize knex.
   // Bind all Models to a knex instance.
   if (env.database.isEnabled) {
-    const knex = Knex(connnection);
+    const knex = Knex(connection);
     Model.knex(knex);
   }
 }
-export { initializeDatabase, connnection };
+export { initializeDatabase, connection };

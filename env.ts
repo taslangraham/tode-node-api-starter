@@ -1,9 +1,8 @@
 /**
  * Loads in application environment variables
  */
-
 import { config as initEnv } from 'dotenv';
-import { Base10 } from "./constants";
+import { Base10 } from "./src/config/constants";
 initEnv();
 
 interface Process extends NodeJS.ProcessEnv {
@@ -29,15 +28,18 @@ const database = {
   port: Number.parseInt(processEnv.DB_PORT, Base10),
   host: processEnv.DB_HOST,
   seeds: {
-    directory: 'src\\data-access\\seeds'
+    directory: 'src\\database\\seeders'
   },
   migrations: {
     tableName: "knex_migrations",
-    directory: 'src\\data-access\\migrations',
+    directory: 'src\\database\\migrations',
   },
 };
+
+const projectDirectory = __dirname;
 
 export const env = {
   database,
   JWT_SECRET: processEnv.JWT_SECRET,
+  projectDirectory,
 };

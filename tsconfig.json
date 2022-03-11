@@ -42,7 +42,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "knexfile.ts"  ],
+    "knexfile.ts", "env.ts"  ],
   "exclude": [
     "node_modules/"
   ],

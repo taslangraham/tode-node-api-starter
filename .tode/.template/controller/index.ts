@@ -1,35 +1,13 @@
-import { Request, Response, Router } from "express";
-module.exports = () => {
-  const router = Router();
-  /**
-   * Create a new Item
-   */
-  router.post("/", async (req, res) => {
-    return res.send('$controller-name/ - POST');
-  });
+import { Request, Response } from "../../config/core";
 
-  /**
-   * Get all Items
-   */
-  router.get("/", (req: Request, res: Response) => {
-    res.send("$controller-name/  - GET");
-  });
+export async function index(request: Request, response: Response) { }
 
-  /**
-   * Get an Item by Id
-   */
-  router.get("/:id", (req: Request, res: Response) => {
-    res.send("$controller-name/  - GET /id");
+export async function store(request: Request, response: Response) { }
 
-  });
+export async function show(request: Request, response: Response) { }
 
-  /**
-   * Update an Item
-   */
-  router.patch("/:id", (req: Request, res: Response) => {
-    res.send("$controller-name/  - PATCH /id");
+export async function edit(request: Request, response: Response) { }
 
-  });
+export async function update(request: Request, response: Response) { }
 
-  return router;
-};
+export async function destroy(request: Request, response: Response) { }
