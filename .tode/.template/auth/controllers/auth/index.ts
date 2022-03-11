@@ -71,14 +71,6 @@
    }
  }
 
- export async function show(request: Request, response: Response) { }
-
- export async function edit(request: Request, response: Response) { }
-
- export async function update(request: Request, response: Response) { }
-
- export async function destroy(request: Request, response: Response) { }
-
  export async function login(request: Request, response: Response) {
    try {
      const loginInfo: LoginInfo = typeof request.body === 'string' ? JSON.parse(request.body) : request.body;
