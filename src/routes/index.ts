@@ -26,7 +26,7 @@ import {
 
 App.get("/", async (request: Request, response: Response) => {
   return response.status(200)
-    .send(`Powered by Tode - a Nodejs Scaffolding told.`);
+    .send(`Powered by Tode - a Nodejs Scaffolding tool.`);
 });
 
 App.get('/example', loadController('example.index'));
